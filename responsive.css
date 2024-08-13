@@ -1,0 +1,249 @@
+/* Media query */
+@media (max-width: 768px) {
+    html {
+      font-size: 50%;
+    }
+  
+    .header {
+      padding: 1rem 2rem;
+    }
+  
+    .header .fa-bars {
+      display: block; /* Show menu icon */
+    }
+  
+    .header .fa-times {
+      display: none; /* Hide close icon */
+    }
+  
+    .main-nav.active {
+      display: block; /* Show main-nav when active */
+    }
+  
+    .header .header-container .header-logo img { 
+      width: 40vw;
+    }
+  
+    /* Show the menu icon on mobile */
+    .header .fa-bars, .fa-times {
+      display: block;
+      font-size: 3rem;
+      margin-top: -1rem;
+    }
+  
+    /* Header link section styling */
+    .header-link {
+      display: none;
+    }
+  
+    .header-link.visible{
+      display: flex; /* Use flex to align items */
+      align-items: center;
+      flex-direction: column;
+      position: absolute;
+      top: 10rem;
+      right: 0;
+      background-color: rgb(255, 255, 255); /* Or your preferred color */
+      width: 100%;
+      z-index: 1000;
+      text-align: center; /* Center text in header link section */
+      transform: translateY(0); /* Show when active */
+    }
+  
+    .search-bar {
+      display: none; /* Hide the search bar on mobile */
+    }
+  
+    .header .header-container .header-link.visible
+     {
+      color: white;
+      margin-top: 10rem;
+      background-color: transparent;
+    }
+    /* Header link styling */
+    .header .header-container .header-link.visible a {
+     
+      padding: 1rem 0; 
+     
+      font-size: 2rem; /* Adjust padding for mobile */
+    }
+  
+    /* Main navigation styling */
+    .main-nav {
+      position: fixed; /* Fixed positioning to ensure it stays in the same place */
+      top: 23rem; /* Adjust top position */
+      left: 50%;
+      transform: translateX(-50%); /* Center horizontally */
+      background-color: white; /* Or your preferred color */
+      width: 100%;
+      z-index: 1000;
+      text-align: center; /* Center align the content */
+      display: none; /* Ensure it's hidden initially */
+    }
+  
+    /* Show the main navigation when active */
+    .main-nav.active {
+      display: block;
+    }
+  
+    /* Main navigation items */
+    .main-nav ul {
+      display: flex;
+      flex-direction: column; /* Stack menu items vertically */
+      align-items: center; /* Center items horizontally */
+      padding: 0;
+      margin: 0;
+    }
+  
+    .main-nav ul li {
+      position: relative;
+    }
+  
+    .main-nav ul li a {
+      padding: 10px;
+      text-decoration: none;
+      color: var(--color);
+      font-size: 2rem;
+      font-weight: 600;
+      display: block;
+      transition: color 0.3s ease;
+    }
+  
+    /* Dropdown menu styles */
+    .main-nav ul li ul {
+      display: none; /* Hide dropdowns by default */
+      position: absolute;
+      top: 100%; /* Position dropdown below parent item */
+      left: 0;
+      overflow-x: hidden;
+      background-color: rgb(255, 255, 255); /* Match background color */
+      border: 1px solid #ccc; /* Optional: add border to dropdown */
+      width: 100%; /* Match width of parent item */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow */
+      padding: 0;
+    }
+  
+    .main-nav ul li ul li {
+      text-align: left; /* Center text in dropdown items */
+    }
+  
+    .main-nav ul li ul li a {
+      padding: 10px;
+      font-size: 1.4rem; /* Slightly smaller font size for dropdown items */
+    }
+  
+    /* Show dropdown on click */
+    .main-nav ul li.active > ul {
+      display: block;
+    }
+  
+    /* Icon styling for dropdowns */
+    .dropdown-icon {
+      margin-left: 0.5rem;
+      cursor: pointer;
+    }
+  }
+
+
+
+  
+
+.lets-talk-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rem 12rem;
+  border: 5px solid var(--white);
+  background-color: white; /* Light background color for the section */
+  border-radius: 8px; /* Rounded corners for the section */
+}
+
+.lets-talk-left {
+  flex: 1;
+  max-width: 50%;
+  position: relative; /* Ensure proper positioning context for the underline */
+}
+
+.lets-talk-left h1 {
+  font-size: 4rem;
+  color: var(--color); /* Primary color */
+  margin-bottom: 1rem; /* Increased margin to better show the underline */
+  position: relative; /* Ensure the ::after pseudo-element is positioned relative to the h1 */
+  padding-bottom: 0.5rem; /* Added padding to provide space for the underline */
+}
+
+.lets-talk-left h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Positioned at the bottom of the padding area */
+  width: 30%;
+  height: 0.4rem; /* Thickness of the underline */
+  background: linear-gradient(90deg, 
+              #FF688B, 
+              #FFC700, 
+              #00BFFF, 
+              #95C92C); /* Gradient with your brand colors */
+  border-radius: 5px; /* Rounded corners for the underline */
+  /* Ensure the underline is behind the text */
+}
+
+.lets-talk-left h2 {
+  font-size: 2rem;
+  color: #6d6b6b; /* Darker color for the subheading */
+  margin-bottom: 1rem;
+}
+
+.lets-talk-left p {
+  font-size: 1.6rem;
+  color: #555; /* Slightly lighter color for the paragraph */
+  line-height: 1.6;
+}
+
+.lets-talk-right {
+  flex: 1;
+  text-align: right; /* Align the button to the right */
+}
+
+.lets-talk-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff; /* Text color */
+  background: linear-gradient(90deg, #FF688B, #FFC700); /* Gradient background */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  text-decoration: none; /* Remove underline from link */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out;
+}
+
+.lets-talk-button:hover {
+  transform: translateY(-3px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.lets-talk-button:active {
+  transform: translateY(0); /* Remove lift effect on click */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Revert to original shadow */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lets-talk-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .lets-talk-left,
+  .lets-talk-right {
+    max-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .lets-talk-right {
+    text-align: center; /* Center the button on smaller screens */
+  }
+}

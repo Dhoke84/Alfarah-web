@@ -1,0 +1,1467 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+  --color: #003C71;
+  --coralpink: #FF688B;
+  --skyblue: #00BFFF;
+  --amber: #FFC700;
+  --green: #95C92C;
+  --white: #F2F4EF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+  text-transform: capitalize;
+  transition: all 0.2s linear;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  overflow-x: hidden;
+}
+/* For Webkit-based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Adjust the width as needed */
+  height: 8px; /* Smaller height for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+  background: #f2f4ef; /* Background color of the track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #003C71, #005F99); /* Gradient color for the scrollbar */
+  border-radius: 10px; /* Roundness of the scrollbar thumb */
+  border: 2px solid #f2f4ef; /* Add border for a rounded effect */
+  min-height: 30px; /* Ensures the thumb height is not too small */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* Makes the scrollbar thinner */
+  scrollbar-color: linear-gradient(180deg, #003C71, #005F99) #f2f4ef; /* Gradient for thumb and color for track */
+  scrollbar-radius: 10px; /* Rounded corners for the scrollbar */
+}
+
+
+.header {
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 8rem;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 4px 6px rgba(236, 234, 234, 0.5); /* White shadow effect */
+}
+
+
+.header .header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header .header-container .header-logo img {
+  width: 20vw;
+}
+
+.header .logo {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.header .header-container .header-link {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+}
+
+.header .header-container .header-link a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  text-decoration: none;
+  color: var(--color);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.header .header-container .header-link a:hover {
+  margin: 0 1rem;
+  padding: 1rem 2rem;
+  border: .2rem solid var(--color);
+  border-radius: 1rem;
+}
+
+/* Active state (background change on click) */
+.header .header-container .header-link a.active {
+  padding: 1rem 2rem;
+  border: .2rem solid var(--color);
+  border-radius: 1rem;
+}
+
+.search-bar {
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.search-bar input {
+  width: 0;
+  padding: 10px 40px 10px 20px;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: width 0.3s ease;
+}
+
+.search-bar.expanded input {
+  width: 300px; /* Adjust as needed */
+  border: 2px solid #003C71;
+}
+
+.search-bar i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #003C71;
+  cursor: pointer;
+}
+
+.search-bar .fa-search {
+  display: block;
+}
+
+.search-bar .fa-times {
+  display: none;
+}
+
+.search-bar.expanded .fa-search {
+  display: none;
+}
+
+.search-bar.expanded .fa-times {
+  display: block;
+}
+
+.search-bar input::placeholder {
+  color: #aaa;
+}
+
+/* Main Navigation Styles */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.main-nav ul li {
+  position: relative;
+}
+
+.main-nav ul li a {
+  color: var(--color);
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 2rem 7rem 0 0;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.main-nav ul li a:after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0.3rem;
+  background-color: #FFC700;
+  transition: width 0.3s ease;
+  margin: 0.5rem auto 0;
+}
+
+.main-nav ul li a.active:after,
+.main-nav ul li a:hover:after {
+  width: 100%;
+}
+
+/* Dropdown Menu Styles */
+.main-nav ul li ul {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #f8f8f8;
+  border: 0.2rem solid whitesmoke;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+}
+
+.main-nav ul li ul li {
+  width: 200px; /* Width of the dropdown items */
+}
+
+.main-nav ul li ul li a {
+  padding: 10px 20px;
+  color: var(--color);
+  font-weight: 500;
+}
+
+.main-nav ul li ul li a:hover {
+  background-color: #e0e0e0; /* Background color on hover */
+}
+
+/* Dropdown Icon */
+.dropdown-icon {
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+/* Show dropdown on hover */
+.main-nav ul li:hover > ul {
+  display: block;
+}
+
+/* Show dropdown on click */
+.main-nav ul li.active > ul {
+  display: block;
+}
+
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Adjustments to the dropdown icon rotation */
+.fa-caret-up {
+  transform: rotate(180deg);
+}
+
+/* Media Queries */
+.header .fa-bars,
+.header .fa-times {
+  display: none;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
+
+  .header {
+    padding: 1rem 2rem;
+    z-index: 5000;
+    position: fixed;
+  }
+
+  .header .fa-bars {
+    margin-top: -1rem;
+    display: block; /* Show menu icon */
+    font-size: 2.5rem;
+  }
+.header .fa-times {
+  font-size: 3rem;
+}
+  .header .fa-times {
+    display: none; /* Hide close icon */
+  }
+ 
+  .header .header-container .header-logo img{
+    width: 50vw;
+  }
+  /* Header link section styling */
+  .header .header-container .header-link {
+    display: none;
+  }
+
+  .header .header-container .header-link.visible {
+    display: flex; /* Use flex to align items */
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 10rem;
+    order: 2;
+    
+    background-color: white;
+    right: 0;
+    /* Or your preferred color */
+    width: 100%;
+    z-index: 1000;
+    text-align: center; /* Center text in header link section */
+    transform: translateY(0); /* Show when active */
+  }
+
+  .search-bar {
+    display: none; /* Hide the search bar on mobile */
+  }
+
+  /* Header link styling */
+  .header .header-container .header-link a {
+    padding: 1rem 0;
+    font-size: 2rem; /* Adjust padding for mobile */
+  }
+
+  /* Main navigation styling */
+  .main-nav {
+  
+    position: fixed; /* Fixed positioning to ensure it stays in the same place */
+    top: 23rem; /* Adjust top position */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+     /* Or your preferred color */
+    width: 100%;
+    background-color: white;
+    z-index: 1000;
+    text-align: center; /* Center align the content */
+    display: none; /* Ensure it's hidden initially */
+  }
+
+  /* Show the main navigation when active */
+  .main-nav.active {
+    display: block;
+  }
+
+  /* Main navigation items */
+  .main-nav ul {
+    display: flex;
+    flex-direction: column; /* Stack menu items vertically */
+    align-items: center; /* Center items horizontally */
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-nav ul li {
+    position: relative;
+  }
+
+  .main-nav ul li a {
+    padding: 10px;
+    text-decoration: none;
+    color: var(--color);
+    font-size: 2rem;
+    font-weight: 600;
+    display: block;
+    transition: color 0.3s ease;
+  }
+
+  /* Dropdown menu styles */
+  .main-nav ul li ul {
+    display: none; /* Hide dropdowns by default */
+    position: absolute;
+    top: 100%; /* Position dropdown below parent item */
+    left: 0;
+    overflow-x: hidden;
+    background-color: rgb(255, 255, 255); /* Match background color */
+    border: 1px solid #ccc; /* Optional: add border to dropdown */
+    width: 100%; /* Match width of parent item */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: add shadow */
+    padding: 0;
+  }
+
+  .main-nav ul li ul li {
+    text-align: left; /* Center text in dropdown items */
+  }
+
+  .main-nav ul li ul li a {
+    padding: 10px;
+    font-size: 1.4rem; /* Slightly smaller font size for dropdown items */
+  }
+
+  /* Show dropdown on click */
+  .main-nav ul li.active > ul {
+    display: block;
+  }
+
+  /* Icon styling for dropdowns */
+  .dropdown-icon {
+    margin-left: 0.5rem;
+    cursor: pointer;
+  }
+}
+
+.home-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 8rem;
+  justify-content: center;
+  min-height: 100vh; /* Full viewport height */
+ /* Background color */
+  padding: 1rem  2rem;
+  text-align: left; /* Center text in the section */
+  overflow: hidden; /* Hide overflow for a cleaner look */
+}
+
+.home-text {
+  flex: 1;
+  max-width: 600px; /* Limit the text width */
+  margin-right: 2rem; /* Space between text and image */
+}
+
+.home-text h1 {
+  font-size: 7rem;
+  margin-bottom: 1rem;
+  color: var(--color); /* Use your primary color */
+  line-height: 1.2; /* Adjust line spacing */
+}
+
+.home-text h2 {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  color: var(--color); /* Use your primary color */
+  line-height: 1.2; 
+}
+
+.home-text p {
+  font-size: 2rem;
+  color: #333; /* Darker text color for readability */
+  line-height: 1.5;
+}
+
+.gradient-button {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff; /* Text color */
+  background: linear-gradient(90deg, #002a4f, #003C71, #005092); /* Gradient using shades of #003C71 */
+  border: none;
+  width: 30%;
+  margin-top: 2rem;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out;
+}
+
+.gradient-button:hover {
+  transform: translateY(-3px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.gradient-button:active {
+  transform: translateY(0); /* Remove lift effect on click */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Revert to original shadow */
+}
+
+.home-image {
+  flex: 1;
+  max-width: 600px; /* Limit the image width */
+  position: relative; /* Position relative for overlay */
+}
+
+.home-image {
+  position: relative; /* Position relative for overlay */
+  z-index: 1; /* Ensure the primary image is on top */
+}
+.image-over-side {
+  position: absolute;
+  bottom: 5rem;
+  right: 1rem;
+  width: 10%; /* Adjust width as needed */
+  height: 60%; /* Adjust height as needed */
+  background: url('./images/end.png') no-repeat center center; /* Use your image path */
+  background-size: contain; /* Ensure the image is fully visible and maintains its aspect ratio */
+  background-position: center center; /* Center the image within the div */
+  z-index: -1; /* Place it behind other content */
+  /* Optional: Add blur effect if needed */
+  /* Optional: Adjust opacity if needed */
+}
+.image-over-behind {
+  position: absolute;
+  top: 20%;
+  right: 12%;
+  width: 20%; /* Adjust width as needed */
+  height: 40%; /* Adjust height as needed */
+  background: url('./images/Free\ Download\ Vector\ Hd\ PNG\ Images\,\ Black\ Dots\ Png\ Free\ Download\,\ Small\ Dots\,\ Painted\,\ Black\ PNG\ Image\ For\ Free\ Download.jpg') no-repeat center center; /* Use your image path */
+  background-size: contain; /* Ensure the image is fully visible and maintains its aspect ratio */
+  background-position: center center; /* Center the image within the div */
+  z-index: -7; /* Place it behind other content */
+  /* Optional: Add blur effect if needed */
+  /* Optional: Adjust opacity if needed */
+}
+
+
+.home-image::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%; /* Increase the width to make the image larger */
+  height: 120%; /* Increase the height to make the image larger */
+  background: url('./images/magicpattern-blob-1723404408073.png') no-repeat center center; /* Background image */
+  background-size: cover; /* Ensure background image covers the area */
+  z-index: 0; /* Place background image behind the primary image */
+  border-radius: 8px; /* Match border-radius of the primary image */
+  transform: translate(-50%, -50%); /* Center the background image */
+  /* Optional: add blur effect to the background image */
+ /* Increase blur effect if needed */
+}
+
+
+.home-image img {
+  width: 100%;
+  
+  height: auto;
+  border-radius: 8px; /* Rounded corners */
+/* Subtle shadow */
+  position: relative; /* Ensure the image is above the blob */
+  z-index: 1; /* Ensure the image is above the blob */
+}
+
+
+.colorful-text {
+  background: linear-gradient(45deg, #FF688B, #FFC700, #00BFFF, #95C92C); /* Gradient color */
+  -webkit-background-clip: text; /* Clip the background to text */
+  -webkit-text-fill-color: transparent; /* Make the text color transparent to show the background */
+  font-weight: bold; /* Optional: make the text bold */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-section {
+    margin-top: 10rem;
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .home-text {
+      margin-right: 0;
+      margin-bottom: 2rem;
+  }
+
+  .home-image {
+      max-width: 100%;
+  }
+  .image-over-behind {
+   display: none;
+  }
+  
+}
+
+.about-section {
+position: relative;
+  padding: 4rem 13rem;
+  height: 90vh;
+  background-color: #f9f9f9; /* Background color for the section */
+}
+.about-text {
+  padding-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-header {
+  margin-bottom: 2rem;
+}
+
+.about-header h1 {
+  font-size: 4rem;
+  color: var(--color); /* Primary color */
+  position: relative; /* Needed for positioning the ::after pseudo-element */
+  display: inline-block; /* Allow the pseudo-element to span the text width */
+  margin-bottom: 0.5rem; /* Space between text and underline */
+}
+
+.about-header h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.2rem; /* Position the underline just below the text */
+  width: 100%;
+  height: 0.4rem; /* Thickness of the underline */
+  background: linear-gradient(90deg, 
+              #FF688B, 
+              #FFC700, 
+              #00BFFF, 
+              #95C92C); /* Gradient with your brand colors */
+  border-radius: 5px; /* Rounded corners for the underline */
+}
+
+.about-header h2 {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+  color: #6d6b6b;
+}
+
+.about-content p {
+  font-size: 1.6rem;
+  color: #6d6b6b;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 8rem;
+  gap: 1rem; /* Space between cards */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+
+  text-align: left;
+  width: 400px; /* Card width */
+}
+
+.card-icon {
+  width: 60px; /* Icon width */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: .2rem; 
+  background-color: var(--white);
+  border-radius: 15rem;/* Space between icon and text */
+}
+
+.card h3 {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  color: var(--color);
+}
+
+.card p {
+  font-size: 1.5rem;
+  color: #6d6b6b;
+}
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff; /* Text color */
+  background: linear-gradient(90deg, #002a4f, #003C71, #005092); /* Gradient using shades of #003C71 */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease;
+ 
+margin-top: 2rem;
+
+  text-align: center; /* Center text */
+}
+
+.button i {
+  margin-left: 0.8rem; /* Space between text and icon */
+  font-size: 1.8rem; /* Adjust icon size as needed */
+}
+
+.button:hover {
+  transform: translate(-50%, -50%) scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.button:active {
+  transform: translate(-50%, -50%) scale(0.95); /* Slightly shrink on click */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Revert to original shadow */
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-section {
+    padding: 4rem 4rem;
+  }
+
+  .about-text {
+    display: block;
+    text-align: center;
+  }
+  .about-cards {
+    margin-top: 3rem;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-header h2 {
+    font-size: 2.2rem;
+  }
+  .card {
+   margin-top: 2rem;
+   padding: 2rem;
+    width: 100%; /* Full width on small screens */
+  }
+
+}
+
+
+.services-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 5rem;
+  background-color: var(--white);
+  padding: 12rem 10rem;
+  flex-wrap: wrap; /* Ensure responsiveness */
+}
+
+.services-left {
+  flex: 1;
+  margin-right: 2rem;
+}
+
+.collage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.collage-item {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.collage .two {
+  display: list-item;
+}
+
+.collage .three {
+  display: list-item;
+}
+
+.collage .four{
+display: list-item;
+}
+
+.services-right {
+  flex: 1;
+  margin-top: 2rem;
+  
+}
+
+.services-right h1 {
+  font-size: 4rem;
+  color: var(--color); /* Primary color */
+  margin-right: 1rem;
+  position: relative; /* Required for positioning ::after pseudo-element */
+}
+
+.services-right h1::after {
+  content: "";
+  position: absolute;
+  left: 0%;
+  text-align: center;
+  bottom: -0.5rem; /* Position the underline just below the text */
+  width: 45%;
+  height: 0.3rem; /* Thickness of the underline */
+  background: linear-gradient(90deg, 
+              #FF688B, 
+              #FFC700, 
+              #00BFFF, 
+              #95C92C); /* Gradient with your brand colors */
+  border-radius: 5px; /* Rounded corners for the underline *//* Place underline behind any content inside .services-right */
+}
+
+.services-right p {
+  font-size: 1.4rem;
+  color: #6d6b6b; /* Darker text color for readability */
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  line-height: .5cm;
+}
+
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  margin-top: 8rem;
+}
+
+.carousel-icon {
+  background-color: var(--color);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-icon:hover {
+  background-color: var(--amber); /* Change to a hover color */
+}
+.services-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.card-new {
+  border: 1px solid #ddd; /* Border around the card */
+  border-radius: 8px; /* Rounded corners */
+  padding: 1rem; /* Padding inside the card */
+  text-align: left; /* Align text to the left */
+  background: #fff; /* Background color */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.card-header {
+  display: flex;
+  align-items: center; /* Align items vertically in the center */
+  margin-bottom: 1rem; /* Space between heading and paragraph */
+}
+.card-icon-new {
+  width: 40px;
+  height: 40px;
+}
+
+.card-header h3 {
+  margin: 0;
+  text-align: left;
+  font-size: 1.6rem;
+  color: var(--color); /* Primary color */
+  flex: 1; /* Allow heading to take up remaining space */
+}
+
+.card-header i {
+  font-size: 1.5rem; /* Adjust size as needed */
+  color: var(--color); /* Use primary color or another color */
+  cursor: pointer; /* Optional: pointer cursor for interactivity */
+  margin-right: 2rem; /* Space between heading and icon */
+}
+
+.card-new p {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #6d6b6b;
+}
+
+
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+
+  .services-right h1::after {
+
+    width: 80%;
+    left: 11%;
+  }
+  .services-section {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 4rem 4rem;
+ 
+  }
+
+  .services-left {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .collage {
+    grid-template-columns: 2fr;
+   width: 300px;
+   height: 150px;
+   background-color: #003C71;
+  }
+  .collage .two {
+display: none;
+  }
+
+  .collage .three {
+    display: none;
+      }
+
+      .collage .four {
+        display: none;
+          }
+  .services-right {
+    width: 100%;
+  }
+
+  .card-new {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .card-icon-new {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+}
+
+
+.facilities-section {
+  padding: 8rem 12rem;
+  background-color: white; /* Background color */
+}
+
+.facilities-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.facilities-header {
+  text-align: center;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.facilities-header h1 {
+  font-size: 4rem;
+  color: var(--color); /* Primary color */
+  margin-right: 1rem;
+  position: relative; /* For positioning the pseudo-element */
+}
+
+.facilities-header h1::after {
+  content: "";
+  position: absolute;
+  left: 40%;
+  text-align: center;
+  bottom: -0.5rem; /* Position the underline just below the text */
+  width: 20%;
+  height: 0.3rem; /* Thickness of the underline */
+  background: linear-gradient(90deg, 
+              #FF688B, 
+              #FFC700, 
+              #00BFFF, 
+              #95C92C); /* Gradient with your brand colors */
+  border-radius: 5px; /* Rounded corners for the underline */
+}
+
+.facilities-header p {
+  font-size: 1.6rem;
+  color: #666; /* Text color */
+  margin: 3rem 0;
+}
+
+.facilities-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards in one row */
+  gap: 5rem;
+  margin-top: 5rem;
+}
+
+
+.card-facility {
+  background: #fff; /* Card background */
+  padding: 1.5rem;
+ 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+}
+
+.card-icon-facilities {
+  width: 70px;
+  height: 70px;
+  background-color: var(--white);
+  border-radius: 15px;
+  margin-bottom: 1rem;
+}
+
+.card-facility h3 {
+  font-size: 1.9rem;
+  color: var(--color);
+  margin-bottom: 0.5rem;
+}
+
+.card-facility p {
+  font-size: 1.5rem;
+  color: #6d6b6b; /* Text color */
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  
+  background-color: var(--white); /* Primary color */
+  border-radius: 50%;
+  color:var(--color); /* Icon color */
+  text-decoration: none;
+  font-size: 2.5rem;
+  position: relative;
+  top: 5rem;
+  padding: 2rem 4rem;
+  border-radius: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.icon-button i {
+  display: inline-block;
+  vertical-align: middle;
+  
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  
+  .facilities-section {
+
+    margin-top: 45rem;
+   
+    padding: 5rem 5rem;}
+  .facilities-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .facilities-header h1 {
+    margin-bottom: 1rem;
+  }
+  .facilities-header h1::after { 
+    left: 15%;
+    width: 72%;
+  }
+
+  .facilities-cards {
+    grid-template-columns: 2fr;
+  }
+
+  .icon-button {
+    top: 2rem; /* Adjust positioning for small screens */
+  }
+}
+
+
+.contact-section {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  padding: 10rem 12rem;
+  gap: 2rem;
+  background-color: white; /* Light background color for the section */
+  border-radius: 8px; /* Rounded corners for the section */
+}
+
+.contact-info, .contact-form {
+  flex: 1;
+  min-width: 300px; /* Ensure items are not too small on smaller screens */
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-info h2 {
+
+  font-size: 4rem;
+  color: var(--color); /* Primary color */
+  margin-bottom: 1rem; /* Increased margin to better show the underline */
+  position: relative; /* Ensure the ::after pseudo-element is positioned relative to the h1 */
+  padding-bottom: 0.5rem; /* Added padding to provide space for the underline */
+}
+.contact-info h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0; /* Positioned at the bottom of the padding area */
+  width: 60%;
+  height: 0.4rem; /* Thickness of the underline */
+  background: linear-gradient(90deg, 
+              #FF688B, 
+              #FFC700, 
+              #00BFFF, 
+              #95C92C); /* Gradient with your brand colors */
+  border-radius: 5px; /* Rounded corners for the underline */
+ /* Ensure the underline is behind the text */
+}
+
+.contact-icon {
+  width: 2.4rem; /* Adjust the size as needed */
+  height: 2.4rem;
+  margin-right: 10px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  color: #6d6b6b;
+  margin-bottom: .5rem; /* Space between contact items */
+}
+
+.contact-item img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.contact-item p {
+  margin: 0; /* Ensure the paragraph aligns properly with the icon */
+  font-size: 1.6rem; /* Adjust text size as needed */
+}
+
+.contact-form {
+  background-color: white;
+  padding: 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle box-shadow */
+  border-radius: 8px; /* Optional: Rounded corners for a smoother look */
+}
+.contact-form h2 {
+  padding: 1rem 0rem;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--color); /* Text color */
+ 
+  width: 50%;
+  margin-top: -2rem;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+ /* Subtle shadow */
+  transition: transform 0.2s ease-in-out;
+}
+
+.contact-form h2:hover {
+  transform: translateY(-3px); /* Lift effect on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+.contact-form h2:active {
+  transform: translateY(0); /* Remove lift effect on click */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Revert to original shadow */
+}
+
+
+.contact-form .form-group {
+  display: flex;
+
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.contact-form label {
+  font-size: 1.6rem;
+  color: var(--color);
+  padding: 1rem 0;
+}
+
+.contact-form input, .contact-form textarea {
+  font-size: 1.4rem;
+  padding: 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.contact-form textarea {
+  resize: vertical; /* Allow vertical resizing only */
+}
+
+.send-button {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(90deg, #FF688B, #FFC700);
+  border: none;
+  border-radius: 8px;
+  margin-top: 2rem;
+  cursor: pointer;
+  width: 100%;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+.send-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.send-button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.img-overlay {
+  position: absolute;
+  bottom: 1%;
+  left: 5%;
+  width: 40%; /* Adjust width as needed */
+  height: 60%; /* Adjust height as needed */
+  background: url('./images/home-image.png') no-repeat center center; /* Use your image path */
+  background-size: contain; /* Ensure the image is fully visible and maintains its aspect ratio */
+  background-position: center center; /* Center the image within the div */
+  z-index: 2; /* Place it behind other content */
+  /* Optional: Add blur effect if needed */
+  /* Optional: Adjust opacity if needed */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .contact-section {
+    margin-top: 6rem;
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .contact-info, .contact-form {
+    min-width: 100%; /* Allow full width on smaller screens */
+  }
+  
+  .contact-form h2 {
+    font-size: 2rem;
+    width: 60%;
+  }
+  .contact-info h2 {
+    text-align: center;
+    font-size:3rem; 
+    
+    width: 100%;/* Smaller font size for headings */
+  }
+
+  .contact-item i {
+    font-size: 1.5rem; /* Smaller icon size */
+  }
+
+  .contact-item p {
+    font-size: 1.8rem; /* Smaller font size for text */
+  }
+
+  .contact-info h2::after {
+    width: 68%;
+    margin-left: 7rem;
+  }
+  .contact-form label, .contact-form input, .contact-form textarea {
+    font-size: 1.8rem; /* Adjust font size */
+  }
+
+  .send-button {
+    font-size: 1.8rem; /* Smaller font size */
+    padding: 0.8rem 1.6rem; /* Adjust padding */
+  }
+  .img-overlay {
+    display: none;
+  }
+}
+
+
+
+
+.footer-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7rem 12rem;
+  background-color: var(--white); /* Background color */
+  color: var(--color); /* Primary text color */
+  background: linear-gradient(90deg, #002a4f, #003C71, #005092); /* Gradient background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+.footer-left {
+  flex: 1;
+  max-width: 40%;
+}
+
+.footer-left img {
+  width: 250px;
+  border-radius: 15px;
+  background-color: white; /* Adjust as needed */
+}
+
+.footer-info {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+  margin-left: .5rem;
+  color: white;
+  font-weight: 500;
+}
+
+.footer-right {
+  display: flex;
+  gap: 2rem;
+  margin-left: -2rem;
+  margin-top: -7rem;
+  flex-direction: column;
+}
+
+.footer-right h2 {
+  font-size: 2rem;
+  color: var(--white);
+}
+.social-media {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.social-icon {
+  color: var(--white); /* Primary color for icons */
+  font-size: 2rem; /* Adjust size as needed */
+  padding-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--amber); /* Change to your desired hover color */
+}
+
+
+
+.quick-links {
+  color: white; 
+  margin-left: -7rem;/* Primary text color */
+}
+
+.quick-links h4 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links ul li {
+  margin-bottom: 0.5rem;
+}
+
+.quick-links ul li a {
+  color: white; /* Primary color for links */
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.4rem;
+  padding-top: 1rem;
+  transition: color 0.3s ease;
+}
+
+.quick-links ul li a:hover {
+  color: #6d6b6b; /* Change to your desired hover color */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .social-icon { 
+    padding: 0 1.5rem;
+  }
+ 
+  .footer-section {
+    flex-direction: column;
+    text-align: center;
+
+    padding: 4rem 4rem;
+  }
+
+  .footer-left {
+    flex: 1;
+    max-width: 100%;
+  }
+  .footer-left,
+  .footer-right {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+  .footer-right {
+    margin-top: 2rem;
+    margin-left: 0rem;
+  }
+  .footer-left img {
+    width: 300px;
+    text-align: center; /* Adjust for smaller screens */
+    margin: 0 auto; /* Center logo on small screens */
+  }
+  .footer-info p {
+    text-align: justify;
+  }
+  .quick-links{ margin-left: 0rem;}
+  .footer-right {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quick-links {
+   
+    margin-top: 2rem;
+    text-align: center; /* Add space above the quick links section */
+  }
+
+  .quick-links ul {
+    display: flex;
+  }
+  .quick-links ul li {
+    margin-bottom: 1rem;
+    flex-direction: row;
+    padding: 1.2em;
+  }
+}
+
+.footer-copyright {
+  width: 100%;
+  padding: 1.5rem 0;
+  background-color: #002a4f; /* Dark background color */
+  color: #fff; /* White text color */
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  border-top: 1px solid #003C71; /* Subtle border at the top */
+}
+
+.footer-copyright p {
+  margin: 0;
+}
+
+.footer-copyright a {
+  color: #00BFFF; /* Link color */
+  text-decoration: none;
+  font-weight: 600; /* Slightly bolder for emphasis */
+  transition: color 0.3s ease;
+}
+
+.footer-copyright a:hover {
+  color: #FF688B; /* Change color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-copyright {
+    padding: 1rem 0;
+    font-size: 1.2rem; /* Slightly smaller text for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-copyright {
+    padding: 0.8rem 0;
+    font-size: 1rem; /* Further reduce text size for very small screens */
+  }
+  
+  .footer-copyright p {
+    line-height: 1.4; /* Adjust line height for better readability on small screens */
+  }
+}
